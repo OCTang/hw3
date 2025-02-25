@@ -6,6 +6,10 @@ class EntriesController < ApplicationController
 
   def create
     @place = Place.find(params[:place_id])
+    if @place.nil?
+      flash[:alert] = "Place not found."
+      redirect_to places_path and return
+    end
     @entry = @place.entries.new(entry_params)
     if @entry.save
       redirect_to place_path(@place), notice: "Entry added successfully!"
