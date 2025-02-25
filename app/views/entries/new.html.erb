@@ -1,0 +1,21 @@
+<h1>Add a New Entry for <%= @place.name %></h1>
+
+<%= form_with model: [@place, @entry] do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :posted_on %>
+    <%= form.date_field :posted_on %>
+  </div>
+  <div>
+    <%= form.submit "Add Entry" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to #{@place.name}", place_path(@place) %>
